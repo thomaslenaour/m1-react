@@ -5,6 +5,13 @@ export enum Season {
   Winter = 'Winter',
 }
 
+export enum NextSeason {
+  Spring = 'Summer',
+  Summer = 'Autumn',
+  Autumn = 'Winter',
+  Winter = 'Spring',
+}
+
 export type SeasonsStartDates = {
   [key in keyof typeof Season]: Date;
 };

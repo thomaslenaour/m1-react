@@ -1,5 +1,6 @@
 import { isLeapYear } from 'date-fns';
 import {
+  NextSeason,
   Season,
   SeasonData,
   SeasonName,
@@ -19,19 +20,6 @@ const generateSeasonDates = (
   };
 };
 
-const getNextSeasonName = (currentSeasonName: SeasonName) => {
-  switch (currentSeasonName) {
-    case Season.Autumn:
-      return Season.Winter;
-    case Season.Winter:
-      return Season.Spring;
-    case Season.Spring:
-      return Season.Summer;
-    case Season.Summer:
-      return Season.Autumn;
-  }
-};
-
 export const getSeasonsData = (currentDate: Date): SeasonsData => {
   let currentSeason: SeasonData;
   let nextSeason: SeasonData;
@@ -44,7 +32,7 @@ export const getSeasonsData = (currentDate: Date): SeasonsData => {
   );
 
   if (!validSeasons.length) {
-    // specific case for winter last year
+    // specific case for winter because it can starts last year
     currentSeason = {
       name: Season.Winter,
       startDate: new Date(year - 1, 11, isLeapYear(year - 1) ? 20 : 21),
@@ -68,7 +56,7 @@ export const getSeasonsData = (currentDate: Date): SeasonsData => {
       startDate: new Date(year + 1, 2, isLeapYear(year + 1) ? 19 : 21),
     };
   } else {
-    const nextSeasonName = getNextSeasonName(currentSeason.name) as SeasonName;
+    const nextSeasonName = NextSeason[currentSeason.name];
 
     nextSeason = {
       name: nextSeasonName,
