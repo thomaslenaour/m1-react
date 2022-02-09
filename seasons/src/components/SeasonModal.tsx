@@ -25,7 +25,7 @@ const SeasonModal: FC<ModalProps> = ({ closeModal, seasonCardData }) => {
         </div>
       </div>
     </>,
-    document.getElementById('modal')!
+    document.getElementById('modal') as HTMLElement,
   );
 };
 

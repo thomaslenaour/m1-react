@@ -10,7 +10,7 @@ import {
 
 const generateSeasonDates = (
   yearIsLeap: boolean,
-  currentYear: number
+  currentYear: number,
 ): SeasonsStartDates => {
   return {
     Spring: new Date(currentYear, 2, yearIsLeap ? 19 : 21),
@@ -28,7 +28,8 @@ export const getSeasonsData = (currentDate: Date): SeasonsData => {
   const seasonStartDates = generateSeasonDates(yearIsLeap, year);
 
   const validSeasons = Object.entries(seasonStartDates).filter(
-    ([_, startDate]) => startDate <= currentDate
+    // eslint-disable-next-line
+    ([_, startDate]) => startDate <= currentDate,
   );
 
   if (!validSeasons.length) {
