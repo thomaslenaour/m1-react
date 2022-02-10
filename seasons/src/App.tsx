@@ -13,17 +13,17 @@ const App: FC = () => {
 
   const currentDate = new Date();
   const { currentSeason, nextSeason } = getSeasonsData(currentDate);
-    const currentSeasonData: SeasonCardProps = {
-     ...currentSeason,
-         currentDate,
+  const currentSeasonData: SeasonCardProps = {
+    ...currentSeason,
+    currentDate,
     imageUrl: `${UNSPLASH_IMAGE_URL}/?${currentSeason.name}`,
-  }
-    const nextSeasonData: SeasonCardProps = {
+  };
+  const nextSeasonData: SeasonCardProps = {
     ...nextSeason,
     currentDate,
     imageUrl: `${UNSPLASH_IMAGE_URL}/?${nextSeason.name}`,
     isNextSeason: true,
-  }
+  };
 
   return (
     <div className="main-container">
