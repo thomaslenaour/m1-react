@@ -27,3 +27,5 @@ export interface SeasonData {
   name: SeasonName;
   startDate: Date;
 }
+
+export const UNSPLASH_IMAGE_URL = 'https://source.unsplash.com/random/400x200';

@@ -16,9 +16,11 @@ describe('Button', () => {
   });
 
   it('should click on the button', () => {
-    const callback = jest.fn();
-    render(<Button label="My super button" type="button" onClick={callback} />);
+    const mockCallback = jest.fn();
+    render(
+      <Button label="My super button" type="button" onClick={mockCallback} />,
+    );
     fireEvent.click(screen.getByText('My super button'));
-    expect(callback).toHaveBeenCalled();
+    expect(mockCallback).toHaveBeenCalled();
   });
 });

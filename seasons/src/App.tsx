@@ -6,8 +6,7 @@ import SeasonModal from './components/SeasonModal';
 import Button from './components/Button';
 
 import { getSeasonsData } from './utils';
-
-const UNSPLASH_IMAGE_URL = 'https://source.unsplash.com/random/400x200';
+import { UNSPLASH_IMAGE_URL } from './types';
 
 const App: FC = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
