@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind screens;
+
+.main-container {
+  @apply px-5 mx-auto max-w-7xl sm:px-10;
+}
