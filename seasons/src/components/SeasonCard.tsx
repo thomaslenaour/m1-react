@@ -29,7 +29,7 @@ const SeasonCard: FC<SeasonCardProps> = ({
 
   return (
     <div
-      className={`rounded-md shadow-lg max-w-sm${
+      className={`rounded-md shadow-lg dark:bg-slate-800 dark:border dark:border-slate-900 dark:text-white max-w-sm${
         isNextSeason ? ' bg-white' : ' border'
       }`}
     >

@@ -4,6 +4,9 @@ import { format } from 'date-fns';
 import SeasonCard, { SeasonCardProps } from './components/SeasonCard';
 import SeasonModal from './components/SeasonModal';
 import Button from './components/Button';
+import TogglerButton from './components/TogglerButton';
+
+import ThemeProvider from './context/ThemeProvider';
 
 import { getSeasonsData } from './utils';
 import { UNSPLASH_IMAGE_URL } from './types';
@@ -26,32 +29,40 @@ const App: FC = () => {
   };
 
   return (
-    <div className="main-container">
-      <div className="flex flex-col justify-center items-center w-full h-screen">
-        <div className="flex flex-col items-center mb-10">
-          <h1 className="font-bold text-4xl mb-5">Season App</h1>
-          <p className="text-gray-500 font-medium text-lg">
-            {format(currentDate, 'PPPP')}
-          </p>
+    <ThemeProvider>
+      <div className="dark:bg-slate-900 dark:text-white">
+        <div className="main-container">
+          <div className="flex flex-col justify-center items-center w-full h-screen">
+            <div className="flex flex-col items-center mb-10">
+              <h1 className="font-bold text-4xl mb-5">Season App</h1>
+              <p className="text-gray-500 font-medium text-lg">
+                {format(currentDate, 'PPPP')}
+              </p>
+            </div>
+            <SeasonCard {...currentSeasonData} />
+            <h3 className="font-medium text-2xl mt-10 mb-5">
+              Want to see more ?
+            </h3>
+            <Button
+              type="button"
+              onClick={() => setModalIsOpen(true)}
+              label="Check the next season"
+              classNames="bg-blue-400 hover:bg-blue-500 text-white"
+            />
+            {modalIsOpen && (
+              <SeasonModal
+                closeModal={() => setModalIsOpen(false)}
+                seasonCardData={nextSeasonData}
+              />
+            )}
+          </div>
         </div>
-        <SeasonCard {...currentSeasonData} />
-        <h3 className="font-medium text-2xl mt-10 mb-5">Want to see more ?</h3>
-        <Button
-          type="button"
-          onClick={() => setModalIsOpen(true)}
-          label="Check the next season"
-          classNames="bg-blue-400 hover:bg-blue-500 text-white"
-        >
-          Check the next season
-        </Button>
-        {modalIsOpen && (
-          <SeasonModal
-            closeModal={() => setModalIsOpen(false)}
-            seasonCardData={nextSeasonData}
-          />
-        )}
+
+        <div className="absolute top-0 left-0">
+          <TogglerButton />
+        </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 };
 
