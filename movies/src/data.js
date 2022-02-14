@@ -17,6 +17,7 @@ export default {
       original_title: "The King's Man",
       popularity: 922.484,
       media_type: 'movie',
+      duration: 120,
     },
     {
       adult: false,
@@ -35,6 +36,7 @@ export default {
       vote_count: 13,
       popularity: 57.476,
       media_type: 'movie',
+      duration: 120,
     },
     {
       overview:
@@ -53,6 +55,7 @@ export default {
       id: 634649,
       popularity: 9972.882,
       media_type: 'movie',
+      duration: 120,
     },
     {
       adult: false,
@@ -71,6 +74,7 @@ export default {
       vote_count: 16,
       popularity: 60.246,
       media_type: 'movie',
+      duration: 120,
     },
     {
       original_language: 'en',
@@ -89,6 +93,7 @@ export default {
       title: 'Marry Me',
       popularity: 387.013,
       media_type: 'movie',
+      duration: 120,
     },
     {
       adult: false,
@@ -107,6 +112,7 @@ export default {
       id: 644495,
       popularity: 1182.306,
       media_type: 'movie',
+      duration: 120,
     },
     {
       video: false,
@@ -125,6 +131,7 @@ export default {
       poster_path: '/680klE0dIreQQOyWKFgNnCAJtws.jpg',
       popularity: 350.912,
       media_type: 'movie',
+      duration: 120,
     },
     {
       release_date: '2022-02-10',
@@ -143,6 +150,7 @@ export default {
         'Peter and Emma thought they were on the precipice of life’s biggest moments – marriage, kids, and houses in the suburbs – until their respective partners dumped them. Horrified to learn that the loves of their lives have already moved on, Peter and Emma hatch a hilarious plan to win back their exes with unexpected results.',
       popularity: 37.739,
       media_type: 'movie',
+      duration: 120,
     },
     {
       original_language: 'pl',
@@ -161,6 +169,7 @@ export default {
       title: 'Into The Wind',
       popularity: 28.93,
       media_type: 'movie',
+      duration: 120,
     },
     {
       original_language: 'en',
@@ -179,6 +188,7 @@ export default {
       title: 'Death on the Nile',
       popularity: 255.85,
       media_type: 'movie',
+      duration: 120,
     },
     {
       original_language: 'en',
@@ -197,6 +207,7 @@ export default {
       title: 'Encanto',
       popularity: 3724.159,
       media_type: 'movie',
+      duration: 120,
     },
     {
       release_date: '2021-11-11',
@@ -215,6 +226,7 @@ export default {
         'When a single mom and her two kids arrive in a small town, they begin to discover their connection to the original Ghostbusters and the secret legacy their grandfather left behind.',
       popularity: 2000.451,
       media_type: 'movie',
+      duration: 120,
     },
     {
       video: false,
@@ -233,6 +245,7 @@ export default {
       title: 'Redeeming Love',
       popularity: 51.38,
       media_type: 'movie',
+      duration: 120,
     },
     {
       overview:
@@ -251,6 +264,7 @@ export default {
       vote_average: 6.2,
       popularity: 3111.312,
       media_type: 'movie',
+      duration: 120,
     },
     {
       overview:
@@ -269,6 +283,7 @@ export default {
       id: 818647,
       popularity: 3158.757,
       media_type: 'movie',
+      duration: 120,
     },
     {
       adult: false,
@@ -287,6 +302,7 @@ export default {
       vote_count: 0,
       popularity: 41.779,
       media_type: 'movie',
+      duration: 120,
     },
     {
       original_language: 'en',
@@ -305,6 +321,7 @@ export default {
       title: 'The Wolf and the Lion',
       popularity: 63.371,
       media_type: 'movie',
+      duration: 120,
     },
     {
       original_language: 'en',
@@ -323,6 +340,7 @@ export default {
       title: 'The Batman',
       popularity: 231.348,
       media_type: 'movie',
+      duration: 120,
     },
     {
       video: false,
@@ -341,6 +359,7 @@ export default {
       release_date: '2022-02-10',
       popularity: 573.403,
       media_type: 'movie',
+      duration: 120,
     },
     {
       overview:
@@ -359,6 +378,7 @@ export default {
       id: 772272,
       popularity: 51.013,
       media_type: 'movie',
+      duration: 120,
     },
   ],
 };

@@ -14,4 +14,5 @@ export interface MovieDataResponse {
   original_title: string;
   popularity: number;
   media_type: string;
+  duration: number;
 }

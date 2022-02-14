@@ -17,7 +17,6 @@ const Home: FC = () => {
     })),
   );
 
-  console.log('i pass here');
   const filteredMovies = movies.filter((movie) =>
     movie.title.toLowerCase().includes(searchText.toLowerCase()),
   );
@@ -36,7 +35,7 @@ const Home: FC = () => {
         <h2 className="text-2xl font-bold mb-1">Search a movie</h2>
         <SearchBar
           value={searchText}
-          onChange={(e) => setSearchText(e.currentTarget.value)}
+          onChange={(e) => setSearchText(e.target.value)}
         />
       </div>
       <div>

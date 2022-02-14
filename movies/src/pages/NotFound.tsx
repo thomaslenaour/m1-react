@@ -7,7 +7,7 @@ const NotFound: FC = () => {
   return (
     <Layout>
       <h2>Page not found...</h2>
-      <Button href={AppRoutes.HOME} label="Back home" />
+      <Button href={AppRoutes.HOME} label="Back home" classes="text-red-500" />
     </Layout>
   );
 };

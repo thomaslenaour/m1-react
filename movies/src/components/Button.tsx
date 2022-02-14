@@ -6,19 +6,20 @@ interface ButtonProps {
   label: string;
   href?: AppRoutes;
   onClick?: () => void;
+  classes?: string;
 }
 
-const Button: FC<ButtonProps> = ({ label, href, onClick }) => {
+const Button: FC<ButtonProps> = ({ label, href, onClick, classes }) => {
   if (href) {
     return (
-      <Link to={href} className="text-red-500">
+      <Link to={href} className={classes}>
         {label}
       </Link>
     );
   }
 
   return (
-    <button role="button" onClick={onClick}>
+    <button role="button" onClick={onClick} className={classes}>
       {label}
     </button>
   );
