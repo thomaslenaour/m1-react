@@ -1,40 +1,60 @@
-import moviesData from '../data';
-import { MovieDataResponse } from '../types';
+import camelize from 'camelize-ts';
 
-type MovieCategoryIdentifiant = keyof typeof moviesData.genres;
+import { MovieDataResponse, MoviesDataResponse } from '../types';
 
-const formatData = (movies: MovieDataResponse[]) => {
-  return movies.map((movie) => ({
-    id: movie.id,
-    posterPath: movie.poster_path,
-    title: movie.title,
-  }));
+export const getMovies = async (pattern: string) => {
+  try {
+    const endpoint = pattern ? `search/moviee` : 'movie/popular';
+    const params = pattern ? `&query=${pattern}` : '';
+
+    const response = await fetch(
+      `${process.env.REACT_APP_TMDB_API_URL}/${endpoint}?api_key=${process.env.REACT_APP_TMDB_API_KEY}${params}`,
+    );
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    const data = await response.json();
+
+    return camelize(data.results) as MoviesDataResponse[];
+  } catch (err) {
+    throw err;
+  }
 };
 
-export const getMovies = () => {
-  return formatData(moviesData.movies);
+export const getMovie = async (movieId: number) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_TMDB_API_URL}/movie/${movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`,
+    );
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    const data = await response.json();
+
+    return camelize(data) as MovieDataResponse;
+  } catch (err) {
+    throw err;
+  }
 };
 
-export const getMovie = (movieId: number) => {
-  return moviesData.movies.find((movie) => movie.id === movieId);
-};
+export const getSimilarMovies = async (movieId: number) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_TMDB_API_URL}/movie/${movieId}/similar?api_key=${process.env.REACT_APP_TMDB_API_KEY}`,
+    );
 
-export const getCategories = (genresIds: number[]) => {
-  return genresIds.reduce(
-    (acc, val) => [...acc, moviesData.genres[val as MovieCategoryIdentifiant]],
-    [] as string[],
-  );
-};
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
 
-export const getSimilarMovies = (
-  genresIds: number[],
-  currentMovieId: number,
-) => {
-  return formatData(
-    moviesData.movies.filter(
-      (movie) =>
-        genresIds.some((genreId) => movie.genre_ids.includes(genreId)) &&
-        movie.id !== currentMovieId,
-    ),
-  );
+    const data = await response.json();
+
+    return camelize(data.results) as MoviesDataResponse[];
+  } catch (err) {
+    throw err;
+  }
 };

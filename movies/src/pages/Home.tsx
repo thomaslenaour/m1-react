@@ -1,14 +1,16 @@
-import { ChangeEvent, FC, useEffect, useState } from 'react';
+import { ChangeEvent, FC, useCallback, useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import Layout from '../components/Layout';
 import MovieList from '../components/MovieList';
 import { MovieCardProps } from '../components/MovieCard';
 import SearchBar from '../components/SearchBar';
+
 import { getMovies } from '../services/movie.service';
-import { useSearchParams } from 'react-router-dom';
 
 const Home: FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [isLoading, setIsLoading] = useState(true);
   const [movies, setMovies] = useState<MovieCardProps[]>([]);
   const [searchText, setSearchText] = useState(searchParams.get('q') || '');
 
@@ -25,11 +27,20 @@ const Home: FC = () => {
     setSearchParams(value ? { q: value } : {});
   };
 
-  useEffect(() => {
-    const foundMovies = getMovies();
+  const fetchMovies = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      setMovies(await getMovies(searchText));
+    } catch (err) {
+      throw err;
+    } finally {
+      setIsLoading(false);
+    }
+  }, [searchText]);
 
-    setMovies(foundMovies);
-  }, []);
+  useEffect(() => {
+    fetchMovies();
+  }, [fetchMovies]);
 
   return (
     <Layout>
@@ -47,7 +58,11 @@ const Home: FC = () => {
       </div>
       <div>
         <h2 className="text-xl font-bold mb-1">Discover our movies...</h2>
-        <MovieList movies={filteredMovies} />
+        {isLoading ? (
+          <div>Loading...</div>
+        ) : (
+          <MovieList movies={filteredMovies} />
+        )}
       </div>
     </Layout>
   );

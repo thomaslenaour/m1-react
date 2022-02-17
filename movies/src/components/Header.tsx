@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { AppRoutes } from '../routes/Routes';
+
 import Button from './Button';
+import { AppRoutes } from '../routes/Routes';
 
 const Header: FC = () => {
   const location = useLocation();

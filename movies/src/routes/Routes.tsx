@@ -6,7 +6,8 @@ import { HomePage, MovieDetailPage, NotFoundPage } from '../pages';
 export enum AppRoutes {
   HOME = '/',
   MOVIE_DETAIL = '/movie/:id',
-  NOT_FOUND = '*',
+  NOT_FOUND = '/error',
+  ERROR = '*',
 }
 
 const Routes: FC = () => {
@@ -14,6 +15,7 @@ const Routes: FC = () => {
     { path: AppRoutes.HOME, element: <HomePage /> },
     { path: AppRoutes.MOVIE_DETAIL, element: <MovieDetailPage /> },
     { path: AppRoutes.NOT_FOUND, element: <NotFoundPage /> },
+    { path: AppRoutes.ERROR, element: <NotFoundPage /> },
   ]);
 };
 
