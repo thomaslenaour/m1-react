@@ -6,3 +6,25 @@
 .main-container {
   @apply px-5 mx-auto max-w-7xl sm:px-10;
 }
+
+.poster-size {
+  max-width: 80px;
+}
+
+@media screen(sm) {
+  .poster-size {
+    max-width: 100px;
+  }
+}
+
+@media screen(md) {
+  .poster-size {
+    max-width: 140px;
+  }
+}
+
+@media screen(lg) {
+  .poster-size {
+    max-width: 180px;
+  }
+}
