@@ -4,7 +4,7 @@ import { MovieDataResponse, MoviesDataResponse } from '../types';
 
 export const getMovies = async (pattern: string) => {
   try {
-    const endpoint = pattern ? `search/moviee` : 'movie/popular';
+    const endpoint = pattern ? `search/movie` : 'movie/popular';
     const params = pattern ? `&query=${pattern}` : '';
 
     const response = await fetch(
