@@ -14,13 +14,17 @@ const Header: FC = () => {
           <Link to={AppRoutes.HOME}>
             <h1 className="text-2xl font-bold">Movies App 🍿</h1>
           </Link>
-          {location.pathname !== '/' && (
-            <Button
-              href={AppRoutes.HOME}
-              label="Back"
-              classes="text-sm bg-white text-black px-2 py-1 rounded font-medium"
-            />
-          )}
+
+          <div className="flex items-center space-x-5">
+            <Link to={AppRoutes.FAVORITES}>Favorites</Link>
+            {location.pathname !== '/' && (
+              <Button
+                href={AppRoutes.HOME}
+                label="Back"
+                classes="text-sm bg-white text-black px-2 py-1 rounded font-medium"
+              />
+            )}
+          </div>
         </nav>
       </div>
     </header>

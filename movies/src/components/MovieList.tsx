@@ -29,10 +29,10 @@ const MovieList: FC<MovieListProps> = ({ movies, horizontal }) => {
             type="button"
             className="absolute top-1 left-1 text-red-500 text-2xl z-10"
             onClick={() => {
-              dispatch(favoriteMoviesSlice.actions.toggle(movie.id));
+              dispatch(favoriteMoviesSlice.actions.toggle(movie));
             }}
           >
-            {favoriteMovies.includes(movie.id) ? (
+            {favoriteMovies.some(({ id }) => id === movie.id) ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"

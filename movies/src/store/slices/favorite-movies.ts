@@ -2,15 +2,21 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { RootState } from '../store';
 
-const initialState: number[] = [];
+interface FavoriteMoviesState {
+  id: number;
+  posterPath: string;
+  title: string;
+}
+
+const initialState: FavoriteMoviesState[] = [];
 
 export const favoriteMoviesSlice = createSlice({
   name: 'favoriteMovies',
   initialState,
   reducers: {
-    toggle: (state, action: PayloadAction<number>) =>
-      state.includes(action.payload)
-        ? state.filter((id) => id !== action.payload)
+    toggle: (state, action: PayloadAction<FavoriteMoviesState>) =>
+      state.some(({ id }) => id === action.payload.id)
+        ? state.filter(({ id }) => id !== action.payload.id)
         : [...state, action.payload],
   },
 });
