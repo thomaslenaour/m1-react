@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind screens;
+
+body {
+  @apply bg-gray-100;
+}
+
+.main-container {
+  @apply px-5 mx-auto max-w-7xl sm:px-10;
+}
