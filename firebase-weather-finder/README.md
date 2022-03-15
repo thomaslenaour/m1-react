@@ -9,7 +9,7 @@ First, you have to clone the repository then go to the folder and install all de
 ```sh
 git clone https://github.com/thomaslenaour/weather-finder
 cd weather-finder
-yarn # or npm install
+yarn
 ```
 
 ### Configuration
@@ -44,7 +44,7 @@ See the **Resources** section.
 To start the project, run this command at the root :
 
 ```sh
-yarn start # or npm start
+yarn start
 ```
 
 **🎉 Go to `locahost:3000` and enjoy !**
