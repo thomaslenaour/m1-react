@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Button from './Button';
 
 export interface WeatherCardProps {
   city: string;
@@ -10,7 +11,7 @@ export interface WeatherCardProps {
   windSpeed: number;
 }
 
-const WeatherCard: FC<WeatherCardProps> = ({
+const WeatherCard: FC<WeatherCardProps & { onAddToFavorites: () => void }> = ({
   city,
   feelsLike,
   currentTemp,
@@ -18,6 +19,7 @@ const WeatherCard: FC<WeatherCardProps> = ({
   maxTemp,
   pressure,
   windSpeed,
+  onAddToFavorites,
 }) => {
   const convertWindSpeedToKmH = (speed: number) =>
     parseFloat((speed * 3.6).toFixed());
@@ -26,7 +28,7 @@ const WeatherCard: FC<WeatherCardProps> = ({
     <div className="bg-white border shadow-sm rounded-md p-3">
       <div className="flex items-center justify-between mb-3">
         <h3 className="font-bold text-lg">{city}</h3>
-        <p>{currentTemp} °C</p>
+        <p className="font-bold text-2xl">{currentTemp} °C</p>
       </div>
       <ul className="grid grid-cols-2 gap-4 text-sm">
         <li>
@@ -50,6 +52,12 @@ const WeatherCard: FC<WeatherCardProps> = ({
           <span>{pressure} hPa</span>
         </li>
       </ul>
+      <Button
+        type="button"
+        label="+ Ajouter aux favoris"
+        onClick={onAddToFavorites}
+        classes="mt-3 w-full bg-indigo-500 font-medium text-white text-sm px-2 py-1 rounded-md"
+      />
     </div>
   );
 };

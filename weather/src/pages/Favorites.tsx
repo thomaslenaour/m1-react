@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Layout from '../components/Layout';
 
-const Weather: FC = () => {
+const Favorites: FC = () => {
   return (
     <Layout>
       <div>Home Page</div>
@@ -9,4 +9,4 @@ const Weather: FC = () => {
   );
 };
 
-export default Weather;
+export default Favorites;

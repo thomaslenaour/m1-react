@@ -1,6 +1,6 @@
 import { OWMResponseData } from './weather.types';
 
-const API_URL = `${process.env.REACT_APP_OPENWEATHERMAP_API_URL}/weather?&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}&units=metric&lang=fr&q=`;
+const API_URL = `${process.env.REACT_APP_OPENWEATHERMAP_API_URL}/weather?&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}&units=metric&q=`;
 
 export const getWeatherLocation = async (location: string) => {
   const response = await fetch(`${API_URL}${encodeURI(location)}`);
@@ -10,8 +10,6 @@ export const getWeatherLocation = async (location: string) => {
   }
 
   const data = (await response.json()) as OWMResponseData;
-
-  console.log('data', data);
 
   return formatData(data);
 };

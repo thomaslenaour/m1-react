@@ -9,6 +9,7 @@ import { getWeatherLocation } from '../services/weather.service';
 
 const Home: FC = () => {
   const [searchInputValue, setSearchInputValue] = useState('');
+  const [error, setError] = useState('');
   const [searchIsLoading, setSearchIsLoading] = useState(false);
   const [searchResult, setSearchResult] = useState<WeatherCardProps | null>(
     null,
@@ -20,6 +21,7 @@ const Home: FC = () => {
 
   const handleSearchSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    setError('');
 
     if (!searchInputValue.trim()) {
       setSearchInputValue('');
@@ -29,7 +31,9 @@ const Home: FC = () => {
     setSearchIsLoading(true);
 
     // call api here
-    const data = await getWeatherLocation(searchInputValue);
+    const data = await getWeatherLocation(searchInputValue).catch((err) => {
+      setError(err?.message || 'Unknown error.');
+    });
     if (data) setSearchResult(data);
 
     setSearchIsLoading(false);
@@ -60,9 +64,15 @@ const Home: FC = () => {
             <Spinner />
           </div>
         )}
+        {error && <p className="text-red-500 mt-3">{error}</p>}
         {searchResult && !searchIsLoading && (
           <div className="mt-3">
-            <WeatherCard {...searchResult} />
+            <WeatherCard
+              {...searchResult}
+              onAddToFavorites={() => {
+                console.log('lol');
+              }}
+            />
           </div>
         )}
       </main>

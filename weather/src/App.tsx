@@ -1,14 +1,22 @@
 import { FC } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { FavoritesWeatherContext } from './contexts/FavoritesWeather';
 
 import Routes from './routes/Routes';
 
 const App: FC = () => {
-  console.log('process.env', process.env);
-
   return (
     <BrowserRouter>
-      <Routes />
+      <FavoritesWeatherContext.Provider
+        value={{
+          cities: [],
+          toggleCity: () => {
+            console.log('yes');
+          },
+        }}
+      >
+        <Routes />
+      </FavoritesWeatherContext.Provider>
     </BrowserRouter>
   );
 };
